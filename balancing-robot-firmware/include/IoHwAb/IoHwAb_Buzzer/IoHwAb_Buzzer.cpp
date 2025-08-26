@@ -13,52 +13,53 @@ void IoHwAb_Beep()
     ledcWriteTone(LEDC_CH, 0);
 }
 
-void IoHwAb_ModeTransition_Sound()
+void IoHwAb_Starting_Sound()
 {
     ledcWriteTone(LEDC_CH, NOTE_C5);
-    delay(110);
-    ledcWriteTone(LEDC_CH, 0);
-    delay(30);
+    delay(200);
 
     ledcWriteTone(LEDC_CH, NOTE_E5);
-    delay(110);
-    ledcWriteTone(LEDC_CH, 0);
-    delay(30);
+    delay(200);
 
     ledcWriteTone(LEDC_CH, NOTE_G5);
-    delay(120);
-    ledcWriteTone(LEDC_CH, 0);
-    delay(30);
+    delay(300);
 
     ledcWriteTone(LEDC_CH, NOTE_C6);
-    delay(220);
-    ledcWriteTone(LEDC_CH, 0);
-    delay(10);
+    delay(400);
 
     ledcWriteTone(LEDC_CH, 0);
 }
 
-void IoHwAb_Starting_Sound()
+void IoHwAb_ModeTransition_Sound()
 {
     ledcWriteTone(LEDC_CH, NOTE_C6);
-    delay(80);
-    ledcWriteTone(LEDC_CH, 0);
-    delay(20);
+    delay(200);
 
     ledcWriteTone(LEDC_CH, NOTE_G5);
-    delay(70);
-    ledcWriteTone(LEDC_CH, 0);
-    delay(15);
+    delay(200);
 
     ledcWriteTone(LEDC_CH, NOTE_E5);
-    delay(70);
-    ledcWriteTone(LEDC_CH, 0);
-    delay(15);
+    delay(300);
 
     ledcWriteTone(LEDC_CH, NOTE_C5);
-    delay(90);
+    delay(400);
+
     ledcWriteTone(LEDC_CH, 0);
-    delay(10);
+}
+
+void IoHwAb_Calib_Sound()
+{
+    ledcWriteTone(LEDC_CH, NOTE_C6);
+    delay(200);
+
+    ledcWriteTone(LEDC_CH, NOTE_G5);
+    delay(200);
+
+    ledcWriteTone(LEDC_CH, NOTE_E5);
+    delay(300);
+
+    ledcWriteTone(LEDC_CH, NOTE_C5);
+    delay(400);
 
     ledcWriteTone(LEDC_CH, 0);
 }
