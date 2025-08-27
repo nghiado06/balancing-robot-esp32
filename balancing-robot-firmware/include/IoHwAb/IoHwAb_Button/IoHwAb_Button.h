@@ -6,8 +6,10 @@
 
 void IoHwAb_Button_Init();
 
-bool IoHwAb_Calib();
+bool IoHwAb_Button_Calib();
 
-bool IoHwAb_ModeTransition();
+bool IoHwAb_Button_ModeTransition();
+
+bool IoHwAb_Button_Arm();
 
 #endif // IOHWAB_BUTTON_H
