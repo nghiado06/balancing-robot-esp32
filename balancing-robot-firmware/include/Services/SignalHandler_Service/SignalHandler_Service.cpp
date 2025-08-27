@@ -11,7 +11,7 @@ void SignalHandler_Service_Handle(Mode &currentMode, bool &armed)
     static uint32_t tMode = 0;
     static uint32_t tArm = 0;
 
-    if (IoHwAb_Button_Arm && millis() - tArm > 200)
+    if (IoHwAb_Button_Arm() && millis() - tArm > 200)
     {
         armed = !armed;
         IoHwAb_Stepper_Enable(armed);
