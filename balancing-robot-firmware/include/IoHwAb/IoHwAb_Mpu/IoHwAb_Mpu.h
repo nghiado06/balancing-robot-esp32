@@ -6,7 +6,11 @@
 
 void IoHwAb_Mpu_Init();
 
-float IoHwAb_Mpu_ReadAngle();
+float IoHwAb_Mpu_ReadAngleX();
+
+float IoHwAb_Mpu_ReadAngleY();
+
+float IoHwAb_Mpu_ReadAngleZ();
 
 float IoHwAb_Mpu_ReadGyro();
 

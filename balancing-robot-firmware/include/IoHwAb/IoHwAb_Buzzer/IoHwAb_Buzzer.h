@@ -7,12 +7,10 @@
 
 void IoHwAb_Buzzer_Init();
 
-void IoHwAb_Beep();
+void IoHwAb_Buzzer_Beep();
 
-void IoHwAb_ModeTransition_Sound();
+void IoHwAb_Buzzer_Function_Sound();
 
-void IoHwAb_Calib_Sound();
-
-void IoHwAb_Starting_Sound();
+void IoHwAb_Buzzer_Starting_Sound();
 
 #endif // IOHWAB_BUZZER_H

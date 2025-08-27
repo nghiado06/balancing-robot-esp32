@@ -2,8 +2,12 @@
 
 void IoHwAb_Button_Init()
 {
+#ifndef BUTTON_INIT
+#define BUTTON_INIT
     pinMode(BUTTON_CALIB_PIN, INPUT_PULLUP);
     pinMode(BUTTON_MODE_PIN, INPUT_PULLUP);
+    pinMode(BUTTON_ARM_PIN, INPUT_PULLUP);
+#endif
 }
 
 bool IoHwAb_Button_Calib()

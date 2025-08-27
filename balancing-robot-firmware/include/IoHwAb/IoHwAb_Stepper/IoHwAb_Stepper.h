@@ -10,4 +10,6 @@ void IoHwAb_Stepper_Init();
 
 void IoHwAb_Stepper_Apply(float fL, bool dL, float fR, bool dR);
 
+void IoHwAb_Stepper_Enable(bool en);
+
 #endif // IOHWAB_STEPPER_H

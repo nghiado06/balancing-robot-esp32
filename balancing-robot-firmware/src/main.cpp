@@ -10,6 +10,5 @@ void setup()
 
 void loop()
 {
-  Serial.println("Read AngleX: " + String(IoHwAb_Mpu_ReadAngle()) + " | " + "Read GyroX: " + String(IoHwAb_Mpu_ReadGyro()));
   delay(100);
 }

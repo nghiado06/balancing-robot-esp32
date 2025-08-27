@@ -2,18 +2,21 @@
 
 void IoHwAb_Buzzer_Init()
 {
+#ifndef BUZZER_INIT
+#define BUZZER_INIT
     ledcSetup(LEDC_CH, 2000, 10);
     ledcAttachPin(BUZZER_PIN, LEDC_CH);
+#endif
 }
 
-void IoHwAb_Beep()
+void IoHwAb_Buzzer_Beep()
 {
     ledcWriteTone(LEDC_CH, 2000);
     delay(100);
     ledcWriteTone(LEDC_CH, 0);
 }
 
-void IoHwAb_Starting_Sound()
+void IoHwAb_Buzzer_Starting_Sound()
 {
     ledcWriteTone(LEDC_CH, NOTE_C5);
     delay(200);
@@ -30,24 +33,7 @@ void IoHwAb_Starting_Sound()
     ledcWriteTone(LEDC_CH, 0);
 }
 
-void IoHwAb_ModeTransition_Sound()
-{
-    ledcWriteTone(LEDC_CH, NOTE_C6);
-    delay(200);
-
-    ledcWriteTone(LEDC_CH, NOTE_G5);
-    delay(200);
-
-    ledcWriteTone(LEDC_CH, NOTE_E5);
-    delay(300);
-
-    ledcWriteTone(LEDC_CH, NOTE_C5);
-    delay(400);
-
-    ledcWriteTone(LEDC_CH, 0);
-}
-
-void IoHwAb_Calib_Sound()
+void IoHwAb_Buzzer_Function_Sound()
 {
     ledcWriteTone(LEDC_CH, NOTE_C6);
     delay(200);

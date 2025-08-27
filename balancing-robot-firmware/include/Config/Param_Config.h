@@ -46,4 +46,11 @@ const uint8_t EYE_SHAPE[8] = {
 #define K_TRIM 0.02f
 #define TRIM_MAX 3.0f
 
+// ======== ULTRA SONIC =======
+#define THRESHOLD_DISTANCE 20.0f
+#define TIMEOUT_DURATION 25000UL
+
+#define V_DEAD 8.0f
+#define YAW_DEAD 2.0f
+
 #endif // PARAM_CONFIG_H

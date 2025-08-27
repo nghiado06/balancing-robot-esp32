@@ -4,9 +4,12 @@ LedControl lc(DIN_PIN, SCLK_PIN, CS_PIN, 1);
 
 void IoHwAb_LedMatrix_Init()
 {
+#ifndef LED_MATRIX_INIT
+#define LED_MATRIX_INIT
     lc.shutdown(0, false); // bật hiển thị
     lc.setIntensity(0, 1); // 0..15
     lc.clearDisplay(0);
+#endif
 }
 
 void IoHwAb_LedMatrix_Display(const uint8_t bmp[8])
