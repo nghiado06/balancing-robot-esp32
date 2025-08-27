@@ -30,3 +30,9 @@ void IoHwAb_Stepper_Enable(bool en)
 {
     digitalWrite(ENABLE_PIN, en ? LOW : HIGH);
 }
+
+void IoHwAb_Stepper_RunSpeed()
+{
+    stepperL.runSpeed();
+    stepperR.runSpeed();
+}

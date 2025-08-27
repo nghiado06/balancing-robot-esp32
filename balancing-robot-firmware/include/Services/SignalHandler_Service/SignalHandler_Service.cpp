@@ -1,13 +1,11 @@
 #include "SignalHandler_Service.h"
 
-static bool armed = false;
-
 void SignalHandler_Service_Init()
 {
     // Initialize signal handling
 }
 
-Mode SignalHandler_Service_Handle(Mode currentMode)
+void SignalHandler_Service_Handle(Mode &currentMode, bool &armed)
 {
     static uint32_t tCalib = 0;
     static uint32_t tMode = 0;
@@ -25,8 +23,8 @@ Mode SignalHandler_Service_Handle(Mode currentMode)
     {
         IoHwAb_Buzzer_Function_Sound();
         tMode = millis();
-        return (currentMode == MODE_IDLE) ? MODE_BLE : (currentMode == MODE_BLE) ? MODE_HAND_CONTROL
-                                                                                 : MODE_IDLE;
+        currentMode = (currentMode == MODE_IDLE) ? MODE_BLE : (currentMode == MODE_BLE) ? MODE_HAND_CONTROL
+                                                                                        : MODE_IDLE;
     }
 
     if (IoHwAb_Button_Calib() && millis() - tCalib > 500)

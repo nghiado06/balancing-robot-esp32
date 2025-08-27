@@ -15,7 +15,7 @@ typedef struct UserCmd
     float v_cmd_mm_s = 0.0f;
     float yaw_cmd_dps = 0.0f;
     uint32_t ts_ms = 0;
-} UserBLE, UserHandControl;
+} UserCmd;
 
 enum Mode
 {
@@ -44,6 +44,6 @@ typedef struct ControlOut
     float fL, fR;
     bool dL, dR;
     float vL, vR, v_fwd, theta_ref;
-};
+} ControlOut;
 
 #endif // TYPES_H

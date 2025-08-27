@@ -12,6 +12,6 @@
 
 void SignalHandler_Service_Init();
 
-Mode SignalHandler_Service_Handle(Mode currentMode);
+void SignalHandler_Service_Handle(Mode &currentMode, bool &armed);
 
 #endif // SIGNAL_HANDLER_SERVICE_H

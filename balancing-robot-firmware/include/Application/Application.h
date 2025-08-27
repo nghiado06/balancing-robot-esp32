@@ -1,8 +1,8 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
-#include <Arduino.h>
 #include <PIDControl_Service.h>
+#include "SignalHandler_Service.h"
 
 void Application_Init();
 
