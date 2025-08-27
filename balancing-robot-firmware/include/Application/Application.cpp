@@ -1,6 +1,6 @@
 #include "Application.h"
 
-float avoid_gain = 1.0f;
+float avoid_gain;
 static bool armed = false;
 UserCmd userBLE, userESPNOW;
 Mode gMode = MODE_IDLE;
@@ -16,6 +16,8 @@ bool readESPNOW(float &v, float &yaw)
 ControlOut ModeIdleHandler(float dt)
 {
     ImuObs imu = PIDControl_Service_IMUHandle(dt);
+
+    avoid_gain = 0.0f;
 
     bool nearlyStill = (fabsf(imu.omega_dps) < 5.0f) && (fabsf(imu.theta_deg) < 5.0f);
     static uint32_t stillStart = 0;
@@ -36,6 +38,8 @@ ControlOut ModeIdleHandler(float dt)
 ControlOut ModeBLEHandler(float dt)
 {
     ImuObs imu = PIDControl_Service_IMUHandle(dt);
+
+    avoid_gain = IoHwAb_UltraSonic_IsTriggered();
 
     // Đọc BLE
     float v = 0;
@@ -69,6 +73,8 @@ ControlOut ModeBLEHandler(float dt)
 ControlOut ModeHandMotionHandler(float dt)
 {
     ImuObs imu = PIDControl_Service_IMUHandle(dt);
+
+    avoid_gain = IoHwAb_UltraSonic_IsTriggered();
 
     float v = 0;
     float yaw = 0;
