@@ -110,18 +110,20 @@ void Application_Init()
 
 void Application_Run()
 {
-    static uint32_t last = micros();
-    uint32_t now = micros();
-    float dt = (now - last) * 1e-6f;
-    if (dt < 0.002f)
-    {
-        IoHwAb_Stepper_RunSpeed();
-        SignalHandler_Service_Handle(gMode, armed);
-        return;
-    }
-    last = now;
-
+    IoHwAb_Stepper_RunSpeed();
+    IoHwAb_Buzzer_Tick();
     SignalHandler_Service_Handle(gMode, armed);
+
+    static uint32_t last = micros();
+    const uint32_t PERIOD_US = 2000;
+    uint32_t now = micros();
+    if ((uint32_t)(now - last) < PERIOD_US)
+        return;
+
+    float dt = ((now - last) * 1e-6f);
+    last = now;
+    if (dt > 0.010f)
+        dt = 0.010f;
 
     if (gMode == MODE_IDLE)
     {

@@ -6,6 +6,9 @@
 #include <Arduino.h>
 
 void IoHwAb_Buzzer_Init();
+void IoHwAb_Buzzer_Tick();
+bool IoHwAb_Buzzer_IsIdle();
+void IoHwAb_Buzzer_Stop();
 
 void IoHwAb_Buzzer_Beep();
 

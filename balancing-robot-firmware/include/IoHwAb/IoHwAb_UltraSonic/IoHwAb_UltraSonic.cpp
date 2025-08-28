@@ -21,14 +21,14 @@ float IoHwAb_UltraSonic_IsTriggered()
     // đo độ rộng xung ECHO, timeout ~25ms (≈4.3 m)
     unsigned long us = pulseIn(ECHO_PIN, HIGH, TIMEOUT_DURATION);
     if (us == 0)
-        return 0.0f;
+        return 1.0f;
 
     float d = us * 0.0343f / 2.0f;
 
     if (d < THRESHOLD_DISTANCE)
     {
-        return 1.0f;
+        return 0.0f;
     }
 
-    return 0.0f;
+    return 1.0f;
 }
