@@ -5,26 +5,20 @@
 #include <MPU6050_tockn.h>
 
 MPU6050 mpu(Wire);
-
-// ---- cấu trúc gói raw gửi đi ----
-#pragma pack(push, 1)
 struct HandMotionRaw
 {
   uint8_t ver;
   uint32_t seq;
   uint32_t ts_ms;
-  float ax, ay, az; // đơn vị: g
-  float gx, gy, gz; // đơn vị: dps
-  uint16_t vbat_mV; // tuỳ chọn
-  uint8_t flags;    // tuỳ chọn (nút, v.v.)
-  uint16_t crc16;   // checksum đơn giản
+  float ax, ay, az;
+  float gx, gy, gz;
+  uint16_t vbat_mV;
+  uint8_t flags;
+  uint16_t crc16;
 };
-#pragma pack(pop)
 
-// ---- thay MAC của receiver tại đây ----
 uint8_t RECEIVER_MAC[6] = {0x24, 0x6F, 0x28, 0xAA, 0xBB, 0xCC};
 
-// ---- tiện ích CRC16 (xorshift nhẹ) ----
 static uint16_t crc16(const uint8_t *data, size_t n)
 {
   uint16_t c = 0xFFFF;
@@ -46,12 +40,10 @@ void setup()
   Serial.begin(115200);
   delay(100);
 
-  // I2C + MPU
-  Wire.begin(); // SDA=21, SCL=22 (ESP32 default – giống repo bạn)
+  Wire.begin();
   mpu.begin();
-  mpu.calcGyroOffsets(true); // offset gyro nhanh
+  mpu.calcGyroOffsets(true);
 
-  // WiFi + ESPNOW
   WiFi.mode(WIFI_STA);
   if (esp_now_init() != ESP_OK)
   {
@@ -61,8 +53,8 @@ void setup()
   }
 
   memcpy(peer.peer_addr, RECEIVER_MAC, 6);
-  peer.channel = 0;     // cùng kênh AP hiện tại; 0 = auto
-  peer.encrypt = false; // nếu muốn mã hoá, set true + LTK
+  peer.channel = 0;
+  peer.encrypt = false;
   if (esp_now_add_peer(&peer) != ESP_OK)
   {
     Serial.println("Add peer failed!");
@@ -78,7 +70,7 @@ void loop()
   static uint32_t last = 0;
   uint32_t now = millis();
   if (now - last < 10)
-  { // ~100 Hz
+  {
     delay(1);
     return;
   }
@@ -91,10 +83,10 @@ void loop()
   pkt.ax = mpu.getAccX();
   pkt.ay = mpu.getAccY();
   pkt.az = mpu.getAccZ();
-  pkt.gx = mpu.getGyroX(); // dps
+  pkt.gx = mpu.getGyroX();
   pkt.gy = mpu.getGyroY();
   pkt.gz = mpu.getGyroZ();
-  pkt.vbat_mV = 0; // nếu không đo pin thì để 0
+  pkt.vbat_mV = 0;
   pkt.flags = 0;
 
   pkt.crc16 = 0;
@@ -103,7 +95,5 @@ void loop()
   esp_err_t e = esp_now_send(RECEIVER_MAC, (const uint8_t *)&pkt, sizeof(pkt));
   if (e != ESP_OK)
   {
-    // tuỳ chọn: debug
-    // Serial.printf("send err=%d\n", e);
   }
 }
