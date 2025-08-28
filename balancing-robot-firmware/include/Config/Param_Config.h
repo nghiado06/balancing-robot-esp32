@@ -53,4 +53,10 @@ const uint8_t EYE_SHAPE[8] = {
 #define V_DEAD 8.0f
 #define YAW_DEAD 2.0f
 
+// ======== HAND MOTION ========
+#define K_VCMD_MM_S_PER_DEG 25.0f
+#define K_YAWCMD_DPS_PER_DEG 20.0f
+#define HM_ALPHA 0.90f
+#define HM_LINK_TIMEOUT_MS 400
+
 #endif // PARAM_CONFIG_H

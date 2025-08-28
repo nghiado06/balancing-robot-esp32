@@ -27,9 +27,9 @@ static void onRecvCb(const uint8_t *mac, const uint8_t *data, int len)
     tmp.crc16 = 0;
     if (crc16(reinterpret_cast<const uint8_t *>(&tmp), sizeof(tmp)) != c)
     {
-        return; // sai checksum
+        return;
     }
-    s_last = tmp; // copy thẳng (ESP-NOW callback không phải ISR cứng)
+    s_last = tmp;
     s_lastRxMs = millis();
     s_lastSeq = tmp.seq;
     s_hasNew = true;
@@ -40,7 +40,6 @@ void IoHwAb_HandMotion_Init()
     WiFi.mode(WIFI_STA);
     if (esp_now_init() != ESP_OK)
     {
-        // bạn có thể thêm Serial.println để debug nếu cần
         return;
     }
     esp_now_register_recv_cb(onRecvCb);
@@ -52,10 +51,10 @@ bool IoHwAb_HandMotion_GetRaw(HandMotionRaw *out)
         return false;
     if (!s_hasNew)
         return false;
-    // đọc một bản sao; tuỳ chọn: clear flag s_hasNew
+
     HandMotionRaw tmp = s_last;
     *out = tmp;
-    s_hasNew = false; // chỉ trả "mới" một lần, tuỳ bạn
+    s_hasNew = false;
     return true;
 }
 
