@@ -5,6 +5,7 @@
 #include "SignalHandler_Service.h"
 #include "IoHwAb_UltraSonic.h"
 #include "DataHandler_Service.h"
+#include "IoHwAb_HandMotion.h"
 
 void Application_Init();
 

@@ -57,6 +57,6 @@ const uint8_t EYE_SHAPE[8] = {
 #define K_VCMD_MM_S_PER_DEG 25.0f
 #define K_YAWCMD_DPS_PER_DEG 20.0f
 #define HM_ALPHA 0.90f
-#define HM_LINK_TIMEOUT_MS 400
+#define HM_LINK_TIMEOUT_MS 300
 
 #endif // PARAM_CONFIG_H

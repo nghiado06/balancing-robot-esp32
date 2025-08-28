@@ -4,6 +4,8 @@
 #include <Arduino.h>
 #include <esp_now.h>
 #include <WiFi.h>
+#include "freertos/FreeRTOS.h"
+#include "freertos/portmacro.h"
 #include "Pin_Config.h"
 #include "Param_Config.h"
 struct HandMotionRaw
@@ -18,10 +20,12 @@ struct HandMotionRaw
     uint16_t crc16;
 };
 
-void IoHwAb_HandMotion_Init();                            // khởi tạo ESPNOW RX
-bool IoHwAb_HandMotion_GetRaw(HandMotionRaw *out);        // lấy bản sao sample mới nhất (nếu có)
-bool IoHwAb_HandMotion_LinkOK(uint32_t timeout_ms = 400); // true nếu gói rx mới trong time-out
-uint32_t IoHwAb_HandMotion_LastRxMs();                    // timestamp lần rx gần nhất
-uint32_t IoHwAb_HandMotion_LastSeq();                     // seq gần nhất
+void IoHwAb_HandMotion_Init();
+bool IoHwAb_HandMotion_GetRaw(HandMotionRaw *out);
+bool IoHwAb_HandMotion_LinkOK(uint32_t timeout_ms = 400);
+uint32_t IoHwAb_HandMotion_LastRxMs();
+uint32_t IoHwAb_HandMotion_LastSeq();
+void IoHwAb_HandMotion_SetEnabled(bool en);
+void IoHwAb_HandMotion_Clear();
 
 #endif // IOHWAB_HANDMOTION_H

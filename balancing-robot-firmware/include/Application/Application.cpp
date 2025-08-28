@@ -103,8 +103,8 @@ void Application_Init()
 {
     PIDControl_Service_Init();
     IoHwAb_HandMotion_Init();
-    DataHandler_Service_Init(true);
-    DataHandler_Service_CalibrateNeutral(400, 2000);
+    IoHwAb_HandMotion_SetEnabled(false);
+    DataHandler_Service_Init(/*forwardAxisIsX=*/true);
 }
 
 void Application_Run()
@@ -112,6 +112,21 @@ void Application_Run()
     IoHwAb_Stepper_RunSpeed();
     IoHwAb_Buzzer_Tick();
     SignalHandler_Service_Handle(gMode, armed);
+
+    static Mode prevMode = MODE_IDLE;
+    if (gMode != prevMode)
+    {
+        if (gMode == MODE_HAND_CONTROL)
+        {
+            IoHwAb_HandMotion_SetEnabled(true);
+            DataHandler_Service_CalibrateNeutral(400, 2000);
+        }
+        else
+        {
+            IoHwAb_HandMotion_SetEnabled(false);
+        }
+        prevMode = gMode;
+    }
 
     static uint32_t last = micros();
     const uint32_t PERIOD_US = 2000;
