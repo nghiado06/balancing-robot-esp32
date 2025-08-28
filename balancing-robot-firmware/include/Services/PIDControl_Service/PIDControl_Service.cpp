@@ -90,39 +90,32 @@ ControlOut PIDControl_Service_Compute(const ImuObs &imu, const ControlIn &u, flo
 {
     static float prev_fL = 0.0f, prev_fR = 0.0f;
 
-    // 1) Chuẩn hóa lệnh (dead-zone, limit)
     float v_cmd = (fabsf(u.v_cmd_mm_s) < V_DEAD) ? 0.0f : u.v_cmd_mm_s;
     float yaw = (fabsf(u.yaw_cmd_dps) < YAW_DEAD) ? 0.0f : u.yaw_cmd_dps;
     v_cmd = clampf(v_cmd, -VMAX_MM_S, +VMAX_MM_S);
 
-    // 2) Tránh vật + mất link
     float v_ref = v_cmd * u.avoid_gain;
     float yaw_ref = u.link_ok ? yaw : 0.0f;
     if (!u.link_ok)
         v_ref = 0.0f;
 
-    // 3) Tham chiếu nghiêng (kèm auto-trim)
     float theta_ref = clampf(K_V * v_ref, -THETA_REF_LIMIT, +THETA_REF_LIMIT) + calib.theta_trim_deg;
 
-    // 4) PID cân bằng -> v_fwd
     float e = theta_ref - imu.theta_deg;
-    // Anti-windup nghèo: khóa I khi v_fwd sẽ bão hòa
     float tentative_I = Iterm + KI * e * dt;
 
     float v_fwd_raw = KP * e - KD * imu.omega_dps + tentative_I;
     float v_fwd = clampf(v_fwd_raw, -VMAX_MM_S, +VMAX_MM_S);
-    // nếu không bão hòa -> nhận I, bão hòa -> khóa I
+
     if (v_fwd == v_fwd_raw)
         Iterm = tentative_I;
 
-    // 5) Trộn rẽ (động học chuẩn)
-    float Omega = deg2rad(yaw_ref); // rad/s
+    float Omega = deg2rad(yaw_ref);
     float vL = v_fwd - 0.5f * Omega * L_MM;
     float vR = v_fwd + 0.5f * Omega * L_MM;
     vL = clampf(vL, -VMAX_MM_S, +VMAX_MM_S);
     vR = clampf(vR, -VMAX_MM_S, +VMAX_MM_S);
 
-    // 6) mm/s -> (STEP Hz, DIR) + ramp
     float fL, fR;
     bool dL, dR;
     vel_to_step(vL, fL, dL);
@@ -133,14 +126,13 @@ ControlOut PIDControl_Service_Compute(const ImuObs &imu, const ControlIn &u, flo
         fL = 0;
         fR = 0;
         Iterm = 0;
-    } // DISARM: dừng & reset I
+    }
 
-    float fL_r = slew(prev_fL, fL, DF_MAX_HZ);
-    float fR_r = slew(prev_fR, fR, DF_MAX_HZ);
+    float fL_r = slew(prev_fL, fL, DF_MAX_HZ * dt);
+    float fR_r = slew(prev_fR, fR, DF_MAX_HZ * dt);
     prev_fL = fL_r;
     prev_fR = fR_r;
 
-    // 7) Gọi motor
     IoHwAb_Stepper_Apply(fL_r, dL, fR_r, dR);
 
     return {fL_r, fR_r, dL, dR, vL, vR, v_fwd, theta_ref};

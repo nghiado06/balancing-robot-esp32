@@ -18,7 +18,6 @@ float IoHwAb_UltraSonic_IsTriggered()
     delayMicroseconds(10);
     digitalWrite(TRIG_PIN, LOW);
 
-    // đo độ rộng xung ECHO, timeout ~25ms (≈4.3 m)
     unsigned long us = pulseIn(ECHO_PIN, HIGH, TIMEOUT_DURATION);
     if (us == 0)
         return 1.0f;
