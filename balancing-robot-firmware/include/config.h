@@ -17,7 +17,7 @@ constexpr uint32_t FULL_STEPS_PER_REV = 200;                       // 1.8deg
 constexpr uint32_t MICROSTEP = 16;                                 // e.g., 1/16
 constexpr uint32_t STEPS_PER_REV = FULL_STEPS_PER_REV * MICROSTEP; // 3200
 
-constexpr bool INVERT_DIR_L = false;
+constexpr bool INVERT_DIR_L = true;
 constexpr bool INVERT_DIR_R = false;
 
 constexpr int LEDC_CH_L = 0;
@@ -29,6 +29,6 @@ constexpr float STEP_HZ_MIN_RUN = 1.0f; // <1Hz consider as stop
 constexpr float STEP_HZ_MAX = 20000.0f; // you can increase if
 
 constexpr float OMEGA_DEADBAND_DEG_S = 1.5f; // deg/s
-constexpr float FALL_ANGLE_DEG = 30.0f;      // angle to consider as fall
+constexpr float FALL_ANGLE_DEG = 70.0f;      // angle to consider as fall
 
 #endif // CONFIG_H

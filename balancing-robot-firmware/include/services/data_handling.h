@@ -34,16 +34,16 @@ public:
 
 private:
     // PID parameters
-    float kp = 30.0f;
-    float ki = 0.0f;
-    float kd = 0.0f;
+    float kp = 31.0f;
+    float ki = 0.01f;
+    float kd = 1.2f;
 
     // PID Computing variables
     float integral = 0.0f;
 
     // Limiters
     float Imax = 0.3f;
-    float Umax = 35.0f;
+    float Umax = 1800.0f;
     float eDead = 0.0f;
 
     // Helpers
