@@ -1,0 +1,2 @@
+Removed Pin From Net: NetName=Buzz_ESP Pin=U1-15
+Added Pin To Net: NetName=Buzz_ESP Pin=U1-7

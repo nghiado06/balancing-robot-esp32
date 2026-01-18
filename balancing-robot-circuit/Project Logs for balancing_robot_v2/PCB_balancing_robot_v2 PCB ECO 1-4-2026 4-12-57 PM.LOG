@@ -1,0 +1,70 @@
+Removed Pin From Net: NetName=3.3V Pin=C3-1
+Removed Pin From Net: NetName=Echo_ESP Pin=C4-4
+Removed Pin From Net: NetName=Trig_ESP Pin=C4-7
+Removed Pin From Net: NetName=Echo Pin=C5-2
+Removed Pin From Net: NetName=Trig Pin=C5-5
+Removed Pin From Net: NetName=GND Pin=C5-9
+Removed Pin From Net: NetName=+5 Pin=C5-10
+Removed Pin From Net: NetName=+5 Pin=C6-1
+Removed Pin From Net: NetName=GND Pin=C6-2
+Removed Pin From Net: NetName=GND Pin=C7-1
+Removed Pin From Net: NetName=+12 Pin=C7-2
+Removed Pin From Net: NetName=GND Pin=C8-1
+Removed Pin From Net: NetName=+12 Pin=C8-2
+Removed Pin From Net: NetName=GND Pin=C9-1
+Removed Pin From Net: NetName=3.3V Pin=C9-2
+Removed Pin From Net: NetName=GND Pin=C10-1
+Removed Pin From Net: NetName=3.3V Pin=C10-2
+Removed Pin From Net: NetName=+5 Pin=P2-1
+Removed Pin From Net: NetName=GND Pin=P2-2
+Removed Pin From Net: NetName=BUZZ Pin=U1-15
+Removed Member From Class: ClassName=SCHE_balancing_robot_v2 Member=C5
+Removed Member From Class: ClassName=SCHE_balancing_robot_v2 Member=C6
+Removed Member From Class: ClassName=SCHE_balancing_robot_v2 Member=P2
+Change Component Footprint: Designator=C3 Old Footprint=CP1/2 New Footprint=CAP/D80/H125/LS35
+Change Component Footprint: Designator=C4 Old Footprint=JP10-C1T New Footprint=CAP/D80/H125/LS35
+Change Component Comment : Designator=C4 Old Comment=3Vto5V(A) New Comment=100uF
+Change Component Comment : Designator=C3 Old Comment=10uF New Comment=100uF
+Change component parameters: Designator = "C3" ("C3"); Footprint = "CP1/2"; UniqueID = "\LVPTJJIV" ("\LVPTJJIV")
+Change component parameters (AddParameter): Name = "BRAND"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PACKAGE"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PART NO"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "STOCK CODE"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "SUPPLIER"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "TYPE"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "C4" ("C4"); Footprint = "JP10-C1T"; UniqueID = "\IPZZOFBO" ("\IPZZOFBO")
+Change component parameters (AddParameter): Name = "BRAND"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PACKAGE"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PART NO"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "STOCK CODE"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "SUPPLIER"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "TYPE"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=U5(CONV_BOB-12009)
+Add component (AddParameter): Name = "Check_prices"; Value = "https://www.snapeda.com/parts/BOB-12009/SparkFun/view-part/?ref=eda"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "SparkFun"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "BOB-12009"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/BOB-12009/SparkFun/view-part/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Pin To Net: NetName=+5 Pin=C3-1
+Added Pin To Net: NetName=+12 Pin=C7-1
+Added Pin To Net: NetName=GND Pin=C7-2
+Added Pin To Net: NetName=+12 Pin=C8-1
+Added Pin To Net: NetName=GND Pin=C8-2
+Added Pin To Net: NetName=3.3V Pin=C9-1
+Added Pin To Net: NetName=GND Pin=C9-2
+Added Pin To Net: NetName=3.3V Pin=C10-1
+Added Pin To Net: NetName=GND Pin=C10-2
+Added Pin To Net: NetName=GND Pin=U5-GND_1
+Added Pin To Net: NetName=GND Pin=U5-GND_2
+Added Pin To Net: NetName=BUZZ Pin=U5-HV2
+Added Pin To Net: NetName=Echo Pin=U5-HV3
+Added Pin To Net: NetName=Trig Pin=U5-HV4
+Added Pin To Net: NetName=+5 Pin=U5-HV
+Added Pin To Net: NetName=Echo_ESP Pin=U5-LV3
+Added Pin To Net: NetName=Trig_ESP Pin=U5-LV4
+Added Pin To Net: NetName=3.3V Pin=U5-LV
+Added Pin To Net: NetName=Buzz_ESP Pin=U1-15
+Added Pin To Net: NetName=Buzz_ESP Pin=U5-LV2
+Added Net: Name=Buzz_ESP
+Added Member To Class: ClassName=SCHE_balancing_robot_v2 Member=Component U5 BOB-12009

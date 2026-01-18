@@ -1,0 +1,19 @@
+Removed Pin From Net: NetName=+5 Pin=C13-1
+Removed Pin From Net: NetName=GND Pin=C13-2
+Removed Pin From Net: NetName=+5 Pin=C14-1
+Removed Pin From Net: NetName=GND Pin=C14-2
+Removed Pin From Net: NetName=+12 Pin=D1-C
+Removed Pin From Net: NetName=+12 Pin=U2-1
+Removed Pin From Net: NetName=GND Pin=U2-2
+Removed Pin From Net: NetName=+5 Pin=U2-3
+Removed Member From Class: ClassName=SCHE_balancing_robot_v2 Member=C13
+Removed Member From Class: ClassName=SCHE_balancing_robot_v2 Member=C14
+Removed Member From Class: ClassName=SCHE_balancing_robot_v2 Member=D1
+Removed Member From Class: ClassName=SCHE_balancing_robot_v2 Member=U2
+Added Component: Designator=LM1(lm2596)
+Added Pin To Net: NetName=+12 Pin=LM1-1
+Added Pin To Net: NetName=GND Pin=LM1-2
+Added Pin To Net: NetName=GND Pin=LM1-3
+Added Pin To Net: NetName=+5 Pin=LM1-4
+Added Pin To Net: NetName=+12 Pin=P5-2
+Added Member To Class: ClassName=SCHE_balancing_robot_v2 Member=Component LM1 LM2596-Adj

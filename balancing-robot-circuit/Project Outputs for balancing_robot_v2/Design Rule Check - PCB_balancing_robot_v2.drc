@@ -1,0 +1,48 @@
+Protel Design System Design Rule Check
+PCB File : D:\doducnghia\NODDTech Lab\projects\Self-Balancing Robot\schematic\balancing_robot_v2\PCB_balancing_robot_v2.PcbDoc
+Date     : 1/5/2026
+Time     : 11:14:11 AM
+
+Processing Rule : Clearance Constraint (Gap=10mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Rule Violations :0
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+Rule Violations :0
+
+Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=10mil) (Max=100mil) (Preferred=10mil) (All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=1mil) (Max=130mil) (All)
+Rule Violations :0
+
+Processing Rule : Hole To Hole Clearance (Gap=8mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=10mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Silk To Solder Mask (Clearance=6mil) (IsPad),(All)
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 6mil) Between Arc (2990.001mil,3659.988mil) on Top Overlay And Pad Q1-1(2990mil,3760mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0mil]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 6mil) Between Arc (2990.001mil,3660.012mil) on Top Overlay And Pad Q1-3(2990mil,3560mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0mil]
+   Violation between Silk To Solder Mask Clearance Constraint: (4.959mil < 6mil) Between Pad Free-3(5300mil,1400mil) on Multi-Layer And Track (4710mil,1500mil)(5390mil,1500mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [4.959mil]
+Rule Violations :3
+
+Processing Rule : Net Antennae (Tolerance=0mil) (All)
+Rule Violations :0
+
+Processing Rule : Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)
+Rule Violations :0
+
+
+Violations Detected : 3
+Waived Violations : 0
+Time Elapsed        : 00:00:02
